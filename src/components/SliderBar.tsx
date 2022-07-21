@@ -1,9 +1,8 @@
 import { Layout, Menu } from 'antd'
-import Sider from 'antd/lib/layout/Sider'
 import React from 'react'
-import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
+import { UserOutlined } from '@ant-design/icons';
 import { Link, Outlet } from 'react-router-dom';
-import { Content } from 'antd/lib/layout/layout';
+const { Sider, Content } = Layout;
 type Props = {}
 
 const SliderBar = (props: Props) => {
@@ -39,9 +38,7 @@ const SliderBar = (props: Props) => {
           ]}
         />
       </Sider>
-      <Content>
-        <Outlet />
-      </Content>
+      <Content><Outlet></Outlet></Content>
     </Layout>
   )
 }
