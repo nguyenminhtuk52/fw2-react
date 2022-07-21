@@ -43,7 +43,7 @@ const columns: ColumnsType<DataType> = [
         title: 'Chức năng',
         dataIndex: 'id',
         key : 'id',
-        render: id => <Button type="primary"><Link to={`admin/product/edit/${id}`}><EditOutlined/></Link></Button>,
+        render: id => <Button type="primary"><Link to={`edit/${id}`}><EditOutlined/></Link></Button>,
     },
 ];
 
