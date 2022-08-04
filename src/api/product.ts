@@ -17,3 +17,7 @@ export const updateProduct = (data: any, id: any) => {
     const url = `/products/${id}`
     return instance.put(url, data)
 }
+export const remove = (id: any) => {
+    const url = `/products/${ id }`
+    return instance.delete(url)
+}

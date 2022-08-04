@@ -57,7 +57,7 @@ getProducts()
     <>
       <Breadcrumb>
 				<Typography.Title level={2} style={{ margin: 0 }}>
-					Cập nhật
+					Cập nhật sản phẩm
 				</Typography.Title>
 			</Breadcrumb>
 			<Row gutter={16}>

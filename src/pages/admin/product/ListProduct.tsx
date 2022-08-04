@@ -1,10 +1,11 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Typography, Button, Table, Space } from 'antd';
 import { Link } from 'react-router-dom'
-import { SearchOutlined, PlusOutlined, EditOutlined } from '@ant-design/icons';
+import {  PlusOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import type { ColumnsType } from 'antd/es/table';
-import { getAll } from "../../../api/product";
+import { getAll, remove } from "../../../api/product";
+
 // import { useQuery } from 'react-query'
 const { Paragraph } = Typography
 
@@ -13,57 +14,65 @@ interface DataType {
     saleOffPrice: number;
     feature: string;
     description: string;
-    id : string | number
+    id: string | number
 }
 
-const columns: ColumnsType<DataType> = [
-    {
-        title: 'Tên sản phẩm',
-        dataIndex: 'name',
-        key: 'name',
-        render: text => <a>{text}</a>,
-    },
-    {
-        title: 'Đặc điểm',
-        dataIndex: 'feature',
-        key: 'feature',
-        render: text => <a>{text}</a>,
-    },
-    {
-        title: 'Giá khuyến mãi',
-        dataIndex: 'saleOffPrice',
-        key: 'saleOffPrice',
-    },
-    {
-        title: 'Mô tả',
-        dataIndex: 'description',
-        key: 'description',
-    },
-    {
-        title: 'Chức năng',
-        dataIndex: 'id',
-        key : 'id',
-        render: id => <Button type="primary"><Link to={`edit/${id}`}><EditOutlined/></Link></Button>,
-    },
-];
+
 
 const ListProduct = () => {
-    const [dataTable, setDataTable] = useState([])
-    useEffect(() => {        
-        const getProducts = async()=>{
+    const [dataTable, setDataTable] = useState([]);
+    const DeleteProduct = async (id: any) => {
+        if (window.confirm("Bạn có muốn xóa không ?")) {
+            const data = await remove(id);
+            getAll();
+        }
+    }
+    useEffect(() => {
+        const getProducts = async () => {
             try {
-                const {data} = await getAll()
-                console.log(data);
-                setDataTable(data)
+                const { data } = await getAll()
+                setDataTable(data);
             } catch (error) {
-               console.log(error); 
-            } 
+                console.log(error);
+            }
         }
         getProducts()
     }, [])
 
-   
+    const columns: ColumnsType<DataType> = [
+        {
+            title: 'Tên sản phẩm',
+            dataIndex: 'name',
+            key: 'name',
+            render: text => <a>{text}</a>,
+        },
+        {
+            title: 'Đặc điểm',
+            dataIndex: 'feature',
+            key: 'feature',
+        },
+        {
+            title: 'Giá khuyến mãi',
+            dataIndex: 'saleOffPrice',
+            key: 'saleOffPrice',
+        },
+        {
+            title: 'Mô tả',
+            dataIndex: 'description',
+            key: 'description',
+        },
+        {
+            title: 'Chức năng',
+            dataIndex: 'id',
+            key: 'id',
+            render: id => <Space>
 
+                <Button type="primary"><Link to={`/admin/product/edit/${id}`}><EditOutlined /></Link></Button>
+                <Button type="danger" onClick={() => DeleteProduct(id)} ><DeleteOutlined /></Button>
+            </Space>
+            ,
+        },
+    ];
     return (
         <>
             <Breadcrumb>

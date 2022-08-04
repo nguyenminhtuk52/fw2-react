@@ -18,17 +18,17 @@ const SliderBar = (props: Props) => {
             {
               key: '1',
               icon: <UserOutlined />,
-              label: 'Điện thoại',
+              label: <Link to="/admin/product">Điện thoại</Link>,
             },
             {
               key: '2',
               icon: <UserOutlined />,
-              label: 'Laptop',
+              label: <Link to="/admin/product">Danh Mục</Link>,
             },
             {
               key: '3',
               icon: <UserOutlined />,
-              label: <Link to="/admin/product/add">Điện thoại</Link>
+              label: <Link to="#">User</Link>
             },
             {
               key: '4',
