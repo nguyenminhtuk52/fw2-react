@@ -40,13 +40,17 @@ const LoginPage = (props: Props) => {
           />
         </Form.Item>
         <Form.Item>
-          <Button type="primary" htmlType="submit" style={{ width: "100%" }} className=" mt-3 login-form-button">
+          <Button type="primary" htmlType="submit" style={{ width: "100%" ,marginBottom:"20px"}} className=" mt-3 login-form-button">
             Đăng Nhập
-          </Button><span style={{ marginTop: "10px" }}>Bạn Chưa Có Tài Khoản ? </span>
-          <br /><Link to="/register" className=""> Đăng Ký Ngay !</Link>
+          </Button>
+          <br />
+          <span style={{ paddingTop: "20px", marginLeft: "70px " }}>Hoặc Đăng Nhập Bằng </span>
+          <br /><Link to="" className="" style={{marginLeft:"87px"}}> <img src="https://img.icons8.com/color/2x/facebook-new.png" alt="" width={'50px'} />
+            <img src="https://img.icons8.com/color/2x/google-logo.png" alt="" width={'45px'}  style={{marginLeft:"30px"}}/>
+          </Link>
         </Form.Item>
       </Form>
-    </div>
+    </div >
   )
 }
 
