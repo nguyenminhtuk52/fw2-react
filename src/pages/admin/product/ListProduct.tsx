@@ -5,8 +5,6 @@ import { Link } from 'react-router-dom'
 import { PlusOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import type { ColumnsType } from 'antd/es/table';
 import { getAll, read, remove, updateProduct } from "../../../api/product";
-
-// import { useQuery } from 'react-query'
 const { Paragraph } = Typography
 
 interface DataType {
@@ -21,20 +19,6 @@ interface DataType {
 
 const ListProduct = () => {
     const [dataTable, setDataTable] = useState([]);
-    const onChangeStatus = async (id: any) => {
-        const {data} = await read(id)
-        let statusNew = 2;
-        if(data.status == 0) {
-            statusNew = 1
-        }else{
-            statusNew = 0
-        }
-        const dataUpdate = {...data, status: statusNew }
-    
-        await updateProduct(dataUpdate,id)
-        const dataNew = await getAll();
-        setDataTable(dataNew.data)
-      }
     const DeleteProduct = async (id: any) => {
         if (window.confirm("Bạn có muốn xóa không ?")) {
             await remove(id);
@@ -62,10 +46,11 @@ const ListProduct = () => {
             render: text => <a>{text}</a>,
         },
         {
-            title: 'Đặc điểm',
-            dataIndex: 'feature',
-            key: 'feature',
-        },
+            title: 'Hình ảnh',
+            dataIndex: 'image',
+            key: 'image',
+            render: image => <img src= {image}  alt="" width={'100px'} /> 
+          },
         {
             title: 'Giá khuyến mãi',
             dataIndex: 'saleOffPrice',

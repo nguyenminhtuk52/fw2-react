@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from "styled-components";
 import { Typography, Col, Row, Button, Checkbox, Form, Input, InputNumber, Select, message } from 'antd'
-import { createProduct } from "../../../api/product";
 import { useNavigate } from "react-router-dom";
+import { CategoryType } from '../../../types/categoryType';
+import { createProduct } from '../../../api/product';
+import { getAllCate } from '../../../api/category';
 import UploadImage from '../../../components/UploadImg';
 
 const { TextArea } = Input
@@ -10,7 +12,15 @@ const { Option } = Select;
 type Props = {}
 
 const AddProduct = () => {
-	const navigate = useNavigate()
+	const [categorys,setCategorys] = useState<CategoryType[]>([])
+	const navigate = useNavigate();
+	useEffect(() => {
+		const getAllCatee = async () =>{
+			const {data} = await getAllCate();
+			setCategorys(data);
+		}
+		getAllCatee();
+	},[])
 	const onFinish = async (values: any) => {
 		console.log('Success:', values);
 		try {
@@ -28,12 +38,12 @@ const AddProduct = () => {
 		<>
 			<Breadcrumb>
 				<Typography.Title level={2} style={{ margin: 0 }}>
-					Thêm mới
+					Thêm mới sản phẩm
 				</Typography.Title>
 			</Breadcrumb>
 			<Row gutter={16}>
 				<Col span={10}>
-					<UploadImage />
+				<UploadImage />
 					{/* <UploadTest/> */}
 				</Col>
 				<Col span={14}>
@@ -54,7 +64,13 @@ const AddProduct = () => {
 						>
 							<Input size="large" />
 						</Form.Item>
-
+						<Form.Item
+							name="image"
+							labelCol={{ span: 24 }}
+							label="Ảnh sản phẩm"
+						>
+							<Input size="large" />
+						</Form.Item>
 						<Row gutter={16}>
 							<Col span={12}>
 								<Form.Item
@@ -79,16 +95,13 @@ const AddProduct = () => {
 							<Col span={12}>
 								<Form.Item
 									label="Phân loại"
-									name="categories"
+									name="category"
 									rules={[{ required: true }]}
 								>
 									<Select style={{ width: '100%' }} size="large">
-										<Option value="phone">Điện thoại</Option>
-										<Option value="laptop">Laptop</Option>
-										<Option value="accessories" disabled>
-											Phụ kiện
-										</Option>
-										<Option value="tablet">Máy tính bảng</Option>
+										{categorys?.map(item =>{
+											return <Option key={item.id} value={item.id}>{item.name}</Option>
+										})}
 									</Select>
 								</Form.Item>
 							</Col>
@@ -122,6 +135,7 @@ const AddProduct = () => {
 		</>
 	)
 }
+
 const Breadcrumb = styled.div`
     display: flex;
     justify-content: space-between;

@@ -1,22 +1,10 @@
 {
   "users": [
     {
-      "email": "tunmph14548@fpt.edu.vn",
-      "phone": 123,
-      "password": "aaa",
+      "email": "tuabc@abc.com",
+      "password": "$2a$10$lmHTpUn9KOO5bxENY4jL9uPTwZM6ZZna0jKerinz97H4UIdqZIqna",
+      "phone": "11111",
       "id": 1
-    },
-    {
-      "id": 2,
-      "email": "apple@.com",
-      "phone": 123,
-      "password": "aaa"
-    },
-    {
-      "id": 3,
-      "email": "apple@.com",
-      "phone": 123,
-      "password": "abc"
     }
   ],
   "category": [
@@ -29,30 +17,122 @@
       "name": "Laptop"
     },
     {
-      "name": "hiphop",
+      "name": "Table",
       "id": 3
+    },
+    {
+      "name": "Tai Nghe",
+      "id": 4
+    },
+    {
+      "name": "Đồng Hồ",
+      "id": 5
+    },
+    {
+      "name": "Phụ Kiện",
+      "id": 6
     }
   ],
   "products": [
     {
-      "name": "Apple iPhone 13 Pro Max",
-      "originalPrice": 33990000,
-      "saleOffPrice": 27390000,
-      "categories": "tablet",
-      "feature": "Màn hình Super Retina XDR 6.7 inch với ProMotion cho cảm giác nhanh nhạy hơn3\nChế độ Điện Ảnh làm tăng thêm độ sâu trường ảnh nông và tự động thay đổi tiêu cự trong video\nHệ thống camera chuyên nghiệp Telephoto, Wide và Ultra Wide 12MP; LiDAR Scanner; phạm vi thu phóng quang học 6x; chụp ảnh macro; Phong Cách Nhiếp Ảnh, video ProRes, HDR thông minh thế hệ 4, chế độ Ban Đêm, Apple ProRAW, khả năng quay video HDR Dolby Vision 4K",
-      "description": "Cần có gói cước dữ liệu. Mạng 5G chỉ khả dụng ở một số thị trường và được cung cấp qua một số nhà mạng. Tốc độ có thể thay đổi tùy địa điểm và nhà mạng. Để biết thông tin về hỗ trợ mạng 5G, vui lòng liên hệ nhà mạng và truy cập apple.com/iphone/cellular.\n\n2Thời lượng pin khác nhau tùy theo cách sử dụng và cấu hình. Truy cập apple.com/batteries để biết thêm thông tin.\n\n",
-      "id": 3,
-      "status": 1
+      "name": "iPhone 13 Pro Max 128GB ",
+      "image": "data:image/jpeg;base64,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",
+      "originalPrice": 2200000,
+      "saleOffPrice": 2000000,
+      "category": 1,
+      "feature": "iPhone 13 Pro Max xứng đáng là một chiếc iPhone lớn nhất, mạnh mẽ nhất và có thời lượng pin dài nhất từ trước đến nay sẽ cho bạn trải nghiệm tuyệt vời, từ những tác vụ bình thường cho đến các ứng dụng chuyên nghiệp.",
+      "description": "iPhone 13 Pro Max xứng đáng là một chiếc iPhone lớn nhất, mạnh mẽ nhất và có thời lượng pin dài nhất từ trước đến nay sẽ cho bạn trải nghiệm tuyệt vời, từ những tác vụ bình thường cho đến các ứng dụng chuyên nghiệp.",
+      "id": 6
     },
     {
-      "name": "Apple Watch Series 3 GPS Sport Band (Viền Nhôm, Dây Cao Su)",
-      "originalPrice": 121212,
-      "saleOffPrice": 21213213,
-      "categories": "tablet",
-      "feature": "Apple Watch Series 3 GPS Sport Band (Viền Nhôm, Dây Cao Su)",
-      "description": "Apple Watch Series 3 GPS Sport Band (Viền Nhôm, Dây Cao Su)",
-      "id": 5,
-      "status": 0
+      "name": "Xiaomi Redmi 10 4GB-128GB 2021",
+      "image": "data:image/jpeg;base64,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",
+      "originalPrice": 190000,
+      "saleOffPrice": 1700000,
+      "category": 1,
+      "feature": "Dòng điện thoại Redmi yêu thích của bạn đã quay trở lại, Redmi 10 với bộ tứ camera 50MP AI đột phá, màn hình 90Hz siêu mượt và cấu hình “phá đảo” trong tầm giá, chắc chắn sẽ tiếp tục là lựa chọn hàng đầu ở phân khúc smartphone giá rẻ.",
+      "description": "Dòng điện thoại Redmi yêu thích của bạn đã quay trở lại, Redmi 10 với bộ tứ camera 50MP AI đột phá, màn hình 90Hz siêu mượt và cấu hình “phá đảo” trong tầm giá, chắc chắn sẽ tiếp tục là lựa chọn hàng đầu ở phân khúc smartphone giá rẻ.",
+      "id": 7
+    },
+    {
+      "name": "OPPO Reno7 8GB-128GB",
+      "image": "https://cdn.tgdd.vn/Products/Images/42/274721/Slider/OPPO-Reno7-4G-(8GB128GB)-1020x570.jpg",
+      "originalPrice": 7890000,
+      "saleOffPrice": 7590000,
+      "category": 1,
+      "feature": "Bên cạnh phiên bản 5G thì OPPO còn tung ra thị trường phiên bản OPPO Reno7 4G với những điểm nổi bật như: Thiết kế thời thượng, sạc siêu nhanh, camera cảm biến thông minh hứa hẹn sẽ mang đến những trải nghiệm cực kỳ trơn tru.",
+      "description": "Bên cạnh phiên bản 5G thì OPPO còn tung ra thị trường phiên bản OPPO Reno7 4G với những điểm nổi bật như: Thiết kế thời thượng, sạc siêu nhanh, camera cảm biến thông minh hứa hẹn sẽ mang đến những trải nghiệm cực kỳ trơn tru.",
+      "id": 8
+    },
+    {
+      "name": "Samsung Galaxy A53 5G 256GB ",
+      "image": "data:image/jpeg;base64,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",
+      "originalPrice": 7990000,
+      "saleOffPrice": 6990000,
+      "category": 1,
+      "feature": "Tận hưởng hiệu năng mạnh mẽ Exynos 1280, màn hình siêu mượt 120Hz và hệ thống camera 64MP chống rung OIS cải tiến. Tất cả được hội tụ bên trong Samsung Galaxy A53 5G gọn nhẹ, tươi trẻ và đầy màu sắc cá tính. Phiên bản bộ nhớ 256GB độc quyền tại FPT Shop còn giúp bạn lưu trữ nhiều hơn.",
+      "description": "Tận hưởng hiệu năng mạnh mẽ Exynos 1280, màn hình siêu mượt 120Hz và hệ thống camera 64MP chống rung OIS cải tiến. Tất cả được hội tụ bên trong Samsung Galaxy A53 5G gọn nhẹ, tươi trẻ và đầy màu sắc cá tính. Phiên bản bộ nhớ 256GB độc quyền tại FPT Shop còn giúp bạn lưu trữ nhiều hơn.",
+      "id": 9
+    },
+    {
+      "name": "Laptop Asus TUF Gaming FX506LHB",
+      "image": "https://cdn.tgdd.vn/Products/Images/44/279259/TimerThumb/asus-tuf-gaming-fx506lhb-i5-hn188w-(12).jpg",
+      "originalPrice": 17900000,
+      "saleOffPrice": 16490000,
+      "category": 2,
+      "feature": "Nếu bạn đang tìm kiếm một chiếc laptop gaming nhưng vẫn sở hữu một mức giá phải chăng thì laptop Asus TUF Gaming FX506LHB i5 (HN188W) sẽ là sự lựa chọn đáng cân nhắc với card đồ họa rời NVIDIA GeForce GTX mạnh mẽ cùng phong cách thiết kế cứng cáp, độc đáo. \n",
+      "description": "Nếu bạn đang tìm kiếm một chiếc laptop gaming nhưng vẫn sở hữu một mức giá phải chăng thì laptop Asus TUF Gaming FX506LHB i5 (HN188W) sẽ là sự lựa chọn đáng cân nhắc với card đồ họa rời NVIDIA GeForce GTX mạnh mẽ cùng phong cách thiết kế cứng cáp, độc đáo. \n",
+      "id": 10
+    },
+    {
+      "name": "Laptop Lenovo Gaming Legion 5",
+      "image": "https://cdn.tgdd.vn/Products/Images/44/272005/lenovo-gaming-legion-5-15ith6-i7-82jk00fnvn-180322-100552-600x600.jpg",
+      "originalPrice": 26490000,
+      "saleOffPrice": 25990000,
+      "category": 2,
+      "feature": "Phong cách thiết kế độc đáo, trẻ trung cùng hiệu năng mạnh mẽ vượt trội của card màn hình NVIDIA RTX hội tụ trong chiếc laptop Lenovo Gaming Legion 5 15ITH6 i7 (82JK00FNVN) hứa hẹn sẽ cân mọi tựa game đình đám cũng như sẵn sàng hỗ trợ bạn xử lý các tác vụ nặng.",
+      "description": "Phong cách thiết kế độc đáo, trẻ trung cùng hiệu năng mạnh mẽ vượt trội của card màn hình NVIDIA RTX hội tụ trong chiếc laptop Lenovo Gaming Legion 5 15ITH6 i7 (82JK00FNVN) hứa hẹn sẽ cân mọi tựa game đình đám cũng như sẵn sàng hỗ trợ bạn xử lý các tác vụ nặng.",
+      "id": 11
+    },
+    {
+      "name": "Loa Bluetooth Mozard X21 ",
+      "image": "https://cdn.tgdd.vn/Products/Images/2162/247516/bluetooth-mozard-x21-ava-600x600.jpg",
+      "originalPrice": 699000,
+      "saleOffPrice": 599000,
+      "category": 4,
+      "feature": "Thiết kế gọn đẹp, bề mặt phủ sắc đen thời thượng, đính kèm dây treo tiện di chuyển\nLoa Bluetooth Mozard X21 có dạng hình tròn, chi tiết tinh tế cho cảm giác sang trọng, cao cấp. Tích hợp dây treo đồng màu cho phép bạn treo móc, mang theo tiện lợi khi đi du lịch, công tác hoặc đơn giản là di chuyển giữa các phòng trong nhà. ",
+      "description": "Thiết kế gọn đẹp, bề mặt phủ sắc đen thời thượng, đính kèm dây treo tiện di chuyển\nLoa Bluetooth Mozard X21 có dạng hình tròn, chi tiết tinh tế cho cảm giác sang trọng, cao cấp. Tích hợp dây treo đồng màu cho phép bạn treo móc, mang theo tiện lợi khi đi du lịch, công tác hoặc đơn giản là di chuyển giữa các phòng trong nhà. ",
+      "id": 12
+    },
+    {
+      "name": "Tai nghe Bluetooth True Wireless AVA+ DS204A-WB Trắng",
+      "image": "https://cdn.tgdd.vn/Products/Images/54/251825/bluetooth-true-wireless-ava-ds204a-wb-trang-thumb-1-600x600.jpeg",
+      "originalPrice": 650000,
+      "saleOffPrice": 450000,
+      "category": 4,
+      "feature": "Tai nghe True Wireless gọn nhẹ, gam màu trắng trẻ trung\nKiểu dáng housing tinh tế, có chuôi cầm dài cho phép bạn cầm nắm vững vàng, đeo vào tai cho độ bám tốt. Về thiết kế hộp sạc thì vị trí mở nắp hộp được làm lõm cho bạn dễ dàng đặt ngón tay vào và bật mở nắp thuận tiện, kết cấu hộp sạc gọn gàng, dễ dàng sử dụng và cất giữ trong túi đeo chéo, túi xách lớn hoặc balo thường dùng của bạn. ",
+      "description": "Tai nghe True Wireless gọn nhẹ, gam màu trắng trẻ trung\nKiểu dáng housing tinh tế, có chuôi cầm dài cho phép bạn cầm nắm vững vàng, đeo vào tai cho độ bám tốt. Về thiết kế hộp sạc thì vị trí mở nắp hộp được làm lõm cho bạn dễ dàng đặt ngón tay vào và bật mở nắp thuận tiện, kết cấu hộp sạc gọn gàng, dễ dàng sử dụng và cất giữ trong túi đeo chéo, túi xách lớn hoặc balo thường dùng của bạn. ",
+      "id": 13
+    },
+    {
+      "name": "Samsung Galaxy Watch 4 40mm Đen ",
+      "image": "https://cdn.tgdd.vn/Products/Images/7077/278304/samsung-galaxy-watch-4-40mm-den-600x600.jpg",
+      "originalPrice": 6590000,
+      "saleOffPrice": 4590000,
+      "category": 5,
+      "feature": "Phiên bản đồng hồ Samsung Galaxy Watch 4 này được thiết kế đơn giản với mặt đồng hồ dạng tròn có đường kính 40 mm thường thấy ở đồng hồ thông minh tạo nên phong cách năng động, cuốn hút. Khung viền đồng hồ được làm từ chất liệu nhôm bền chắc, trọng lượng nhẹ. Bên cạnh đó dây đeo silicone êm ái, không gây khó chịu khi đeo suốt ngày dài, kể cả khi người dùng vận động, tập thể thao ra nhiều mồ hôi tay.",
+      "description": "Phiên bản đồng hồ Samsung Galaxy Watch 4 này được thiết kế đơn giản với mặt đồng hồ dạng tròn có đường kính 40 mm thường thấy ở đồng hồ thông minh tạo nên phong cách năng động, cuốn hút. Khung viền đồng hồ được làm từ chất liệu nhôm bền chắc, trọng lượng nhẹ. Bên cạnh đó dây đeo silicone êm ái, không gây khó chịu khi đeo suốt ngày dài, kể cả khi người dùng vận động, tập thể thao ra nhiều mồ hôi tay.",
+      "id": 14
+    },
+    {
+      "name": "Apple Watch SE 40mm viền nhôm dây silicone",
+      "image": "https://cdn.tgdd.vn/Products/Images/7077/234918/se-40mm-vien-nhom-day-cao-su-xanh-den-thumb-1-600x600.jpg",
+      "originalPrice": 8900000,
+      "saleOffPrice": 7900000,
+      "category": 5,
+      "feature": "Thiết kế sang trọng, hiện đại, mang nét đặc trưng của Apple\nApple Watch SE 40mm viền nhôm dây silicone hồng có thiết kế bo tròn 4 góc giúp thao tác vuốt chạm thoải mái hơn. Mặt kính cường lực Ion-X strengthened glass với kích thước 1.57 inch, hiển thị rõ ràng. Khung viền nhôm chắc chắn cùng dây đeo silicone có độ đàn hồi cao, êm ái, tạo cảm giác thoải mái khi đeo.",
+      "description": "Thiết kế sang trọng, hiện đại, mang nét đặc trưng của Apple\nApple Watch SE 40mm viền nhôm dây silicone hồng có thiết kế bo tròn 4 góc giúp thao tác vuốt chạm thoải mái hơn. Mặt kính cường lực Ion-X strengthened glass với kích thước 1.57 inch, hiển thị rõ ràng. Khung viền nhôm chắc chắn cùng dây đeo silicone có độ đàn hồi cao, êm ái, tạo cảm giác thoải mái khi đeo.",
+      "id": 15
     }
   ]
 }

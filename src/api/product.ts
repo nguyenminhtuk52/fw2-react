@@ -25,3 +25,7 @@ export const changeStatus = (id :any,data:any)=>{
     const url = `products/${id}`
     return instance.patch(url,data)
 }
+export const filterPro = (id:any) => {
+    const url = `/products?category=${id}`
+    return instance.get(url)
+}

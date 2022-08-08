@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import Input from 'rc-input'
 import { Button, Tooltip } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
+import LogoWebSite from '../../assets/anhhtus-logo 2.png'
+
 type Props = {}
 const HeaderStyle: React.CSSProperties = {
   backgroundColor: '#00B0D7',
@@ -39,7 +41,7 @@ const AdminHeader = (props: Props) => {
   return (
     <Header style={HeaderStyle}>
       <Wrap>
-        <Logo src="" />
+        <Logo src={LogoWebSite} />
         <Heading style={dash}>Dashboard</Heading>
         <>
           <Input style={InputStyle} />

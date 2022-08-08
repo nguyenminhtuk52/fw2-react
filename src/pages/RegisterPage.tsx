@@ -1,62 +1,99 @@
-import { LockOutlined, UserOutlined } from '@ant-design/icons';
+import { EyeInvisibleOutlined, EyeTwoTone, LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Form, Input, message } from 'antd'
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { register } from '../api/user';
+import { userType } from '../types/userType';
+import styled from "styled-components";
+import LogoWebSite from '../assets/anhhtus-logo 2.png'
+
+
 
 type SignUpProps = {
   //   onSignup : (user: any) => void
 }
 
 const RegisterPage = (props: SignUpProps) => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const onFinish = async (values : userType) => {
+    await register(values);
+    navigate("/login")
+  }
   return (
-    <div style={{ margin: "30px auto" }}>
+    <Cotainer>
+      <Form1>
       <Form
-        name="normal_login"
-        className="login-form"
-        style={{ width: "300px" }}
-
-        initialValues={{ remember: true }}
+       name="normal_login"
+       className="login-form"
+       style={{ width: "300px" }}
+       onFinish={onFinish}
+       initialValues={{ remember: true }}
       >
         <Form.Item
           name="email"
           label='Email Address'
           labelCol={{ span: 24 }}
-
-          rules={[{ required: true, message: 'Please input your name!' }]}
+          rules={[{ required: true, message: 'Please input your email!' }]}
         >
           <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Email" />
         </Form.Item>
         <Form.Item
           labelCol={{ span: 24 }}
-          name="phone"
           label='Phone Number'
+          name="phone"
           rules={[{ required: true, message: 'Please input your email!' }]}
         >
-          <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Số Diện Thoại" />
+          <Input  prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Số Diện Thoại" />
         </Form.Item>
         <Form.Item
-          labelCol={{ span: 24 }}
           name="password"
-          label='Password'
+          label="Password"
+          labelCol={{ span: 24 }}
           rules={[{ required: true, message: 'Please input your password!' }]}
+
         >
-          <Input
+          <Input.Password className="mt-3"
             prefix={<LockOutlined className="site-form-item-icon" />}
-            type="password"
             placeholder="Mật Khẩu"
+            iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
           />
         </Form.Item>
         <Form.Item>
-          <Button type="primary" htmlType="submit" style={{ width: "100%" }} className="login-form-button">
+          <Button type="primary" htmlType="submit" style={{ width: "100%", marginBottom: "20px" }} className=" mt-3 login-form-button">
             Đăng Ký
-          </Button><span style={{ marginTop: "10px" }}>Bạn Đã Có Tài Khoản ?  </span>
-          <br /><Link to="/login" className="">Đăng Nhập Ngay !</Link>
+          </Button>
+          <br />
+          <span style={{ paddingTop: "20px", marginLeft: "70px " }}>Hoặc Đăng  Ký Bằng </span>
+          <br /><Link to="" className="" style={{ marginLeft: "87px" }}> <img src="https://img.icons8.com/color/2x/facebook-new.png" alt="" width={'50px'} />
+            <img src="https://img.icons8.com/color/2x/google-logo.png" alt="" width={'45px'} style={{ marginLeft: "30px" }} />
+          </Link>
         </Form.Item>
       </Form>
-    </div>
+      </Form1>
+      <Image>
+        <Link to='/'><Logo src={LogoWebSite} /></Link>
+      </Image>
+    </Cotainer>
   )
 }
+const Cotainer = styled.div`
+display: flex;
+max-width:700px;
+max-height:900px;
+gap:80px;
+background-color:#F8F8F8;
+margin:100px auto;
+border-radius:15px
+`;
+const Image = styled.div`
 
+`;
+const Logo = styled.img`
+margin-top : 120px;
+
+`
+const Form1 = styled.div`
+margin-left:30px;
+margin-top: 40px;
+`
 export default RegisterPage

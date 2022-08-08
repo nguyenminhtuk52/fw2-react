@@ -22,7 +22,7 @@ export const updateUser = (data: any, id: any) => {
     return instance.put(url, data)
 }
 export const login = (values:any) =>{
-    const url = `login`
+    const url = `signin`
     return instance.post(url,values)
 }
 export const register = (values:any) =>{

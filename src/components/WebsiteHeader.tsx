@@ -63,7 +63,7 @@ const WebsiteHeader = (props: Props) => {
             <CartImg src={CartImage}/>
             <CartLink>Giỏ <br /> Hàng</CartLink>
           </Cart>
-            <><Auth><NavLink style={NavLinkStyle} to='login'>Đăng nhập</NavLink></Auth><Auth><NavLink style={NavLinkStyle} to='register'>Đăng ký</NavLink></Auth></>
+            <Log><Auth><NavLink style={NavLinkStyle} to='login'>Đăng nhập</NavLink></Auth>|<Auth><NavLink style={NavLinkStyle} to='register'>Đăng ký</NavLink></Auth></Log>
         </Nav>
     </Header>
   )
@@ -130,5 +130,10 @@ color: #ffff;
 `
 const Auth = styled.div `
 margin-left:20px;
+`
+const Log = styled.div `
+  margin-top:13px;
+  display:flex;
+  margin-left:5px;
 `
 export default WebsiteHeader

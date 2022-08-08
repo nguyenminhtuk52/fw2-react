@@ -14,16 +14,19 @@ import EditUser from './pages/admin/users/EditUser';
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
 import WebsiteMain from './components/WebsiteMain';
+import WebsiteDetail from './components/WebsiteDetail';
 function App() {
   return (
     <div>
       <Wrapper>
         <Routes>
-          <Route path="/" element={<WebsiteLayout />}>
-            <Route index element={<WebsiteMain />}></Route>
-            <Route path="login" element={<LoginPage />} />
-            <Route path="register" element={<RegisterPage />} />
-          </Route>
+        <Route path="/" element={<WebsiteLayout />}>
+          <Route index element={<WebsiteMain />} />
+          <Route path="category/:id" element={< WebsiteMain/>} />
+          <Route path=":id/detail" element={< WebsiteDetail/>} />
+        </Route>
+          <Route path="login" element={<LoginPage />} />
+          <Route path="register" element={<RegisterPage />} />
           <Route path='admin' element={<LayoutAdmin />}>
             <Route path='product'>
               <Route index element={<ListProduct />} />
@@ -50,6 +53,5 @@ const Wrapper = styled.div`
   max-width: 1777px;
   margin: 0 auto;
   font-family: Roboto, sans-serif;
-  background-color: #e5e5e5;
 `;
 export default App

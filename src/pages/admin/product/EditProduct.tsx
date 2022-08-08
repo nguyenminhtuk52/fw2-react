@@ -1,28 +1,37 @@
 import { Breadcrumb, Button, Col, Form, Input, InputNumber, message, Row, Select, Typography } from 'antd';
 import TextArea from 'antd/lib/input/TextArea';
 import { Option } from 'antd/lib/mentions';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { upload } from '../../../api/image';
-import { createProduct, getAll, read, updateProduct } from '../../../api/product';
+import { upload } from '../api/image';
+import { CategoryType } from '../../../types/categoryType';
+import { read, updateProduct } from '../../../api/product';
+import { getAllCate } from '../../../api/category';
 import UploadImage from '../../../components/UploadImg';
 
-const EditProduct = () => {
-  const {id} = useParams()
-  console.log(id);
-  const [form] = Form.useForm();
-  const getProducts =  async () =>{
-    const {data} = await read(id)
-    form.setFieldsValue(data);
-}
-getProducts()
-  const [previewImage, setPreviewImage] = useState('')
-  const [imageUrl, setImageUrl] = useState('')
-  const navigate = useNavigate()
+
+const UpdateProduct = () => {
+	const [categorys, setCategorys] = useState<CategoryType[]>([])
+	const { id } = useParams()
+	useEffect(() => {
+		const getAllCatee = async () => {
+			const { data } = await getAllCate();
+			setCategorys(data);
+		}
+		getAllCatee();
+	}, [])
+	// console.log(id);
+	const [form] = Form.useForm();
+	const getProducts = async () => {
+		const { data } = await read(id)
+		form.setFieldsValue(data);
+	}
+	getProducts()
+	const navigate = useNavigate()
 	const onFinish = async (values: any) => {
 		console.log('Success:', values);
 		try {
-			await updateProduct(values,id)
+			await updateProduct(values, id)
 			message.success("Cập nhật thành công")
 			navigate('/admin/product')
 		} catch (err) {
@@ -32,32 +41,11 @@ getProducts()
 	const onFinishFailed = (errorInfo: any) => {
 		console.log('Failed:', errorInfo);
 	};
-  const handleChangeImage = (event: any) => {
-    const file = event.target.files[0]
-    console.log(file);
-    
-    const reader = new FileReader()
-    reader.readAsDataURL(file)
-    reader.onloadend = () => {
-      setPreviewImage(reader.result)
-    }
-  }
-
-  const uploadImage = async (base64Image: string) => {
-    try {
-      const res = await upload(base64Image)
-      const data = res.data
-      setImageUrl(data.url)
-    } catch(err:any) {
-      console.log(err);
-      message.error(JSON.stringify(err.message))
-    }
-  }
-  return (
-    <>
-      <Breadcrumb>
+	return (
+		<>
+			<Breadcrumb>
 				<Typography.Title level={2} style={{ margin: 0 }}>
-					Cập nhật sản phẩm
+					Cập nhật
 				</Typography.Title>
 			</Breadcrumb>
 			<Row gutter={16}>
@@ -68,7 +56,7 @@ getProducts()
 				<Col span={14}>
 					<Typography.Title level={5}>Thông tin sản phẩm</Typography.Title>
 					<Form
-           form={form}
+						form={form}
 						initialValues={{}}
 						onFinish={onFinish}
 						onFinishFailed={onFinishFailed}
@@ -83,7 +71,14 @@ getProducts()
 						>
 							<Input size="large" />
 						</Form.Item>
-
+						<Form.Item
+							name="image"
+							labelCol={{ span: 24 }}
+							label="Ảnh sản phẩm"
+							rules={[{ required: true, message: 'Ảnh sản phẩm không được trống' }]}
+						>
+							<Input size="large" />
+						</Form.Item>
 						<Row gutter={16}>
 							<Col span={12}>
 								<Form.Item
@@ -108,16 +103,14 @@ getProducts()
 							<Col span={12}>
 								<Form.Item
 									label="Phân loại"
-									name="categories"
+									name="category"
 									rules={[{ required: true }]}
 								>
 									<Select style={{ width: '100%' }} size="large">
-										<Option value="phone">Điện thoại</Option>
-										<Option value="laptop">Laptop</Option>
-										<Option value="accessories" disabled>
-											Phụ kiện
-										</Option>
-										<Option value="tablet">Máy tính bảng</Option>
+										<Option >Choose category</Option>
+										{categorys?.map(item => {
+											return <Option key={item.id} value={item.id}>{item.name}</Option>
+										})}
 									</Select>
 								</Form.Item>
 							</Col>
@@ -149,7 +142,7 @@ getProducts()
 				</Col>
 			</Row>
 		</>
-  );
+	);
 };
 
-export default EditProduct;
+export default UpdateProduct;
