@@ -23,17 +23,17 @@ const SliderBar = (props: Props) => {
             {
               key: '2',
               icon: <UserOutlined />,
-              label: <Link to="/admin/product">Danh Mục</Link>,
+              label: <Link to="/admin/category">Danh Mục</Link>,
             },
             {
               key: '3',
               icon: <UserOutlined />,
-              label: <Link to="#">User</Link>
+              label: <Link to="/admin/user">User</Link>
             },
             {
               key: '4',
               icon: <UserOutlined />,
-              label: 'Âm thanh',
+              label: <Link to="/admin/user">Order</Link>
             },
           ]}
         />

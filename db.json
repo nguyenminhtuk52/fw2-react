@@ -1,28 +1,39 @@
 {
-  "users": [],
-  "cate": [
+  "users": [
     {
-      "id": "1",
+      "email": "tunmph14548@fpt.edu.vn",
+      "phone": 123,
+      "password": "aaa",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "email": "apple@.com",
+      "phone": 123,
+      "password": "aaa"
+    },
+    {
+      "id": 3,
+      "email": "apple@.com",
+      "phone": 123,
+      "password": "abc"
+    }
+  ],
+  "category": [
+    {
+      "id": 1,
       "name": "Điện thoại"
     },
     {
-      "id": "2",
+      "id": 2,
       "name": "Laptop"
     },
     {
-      "id": "3",
-      "name": "Máy tính bảng"
-    },
-    {
-      "id": "4",
-      "name": "Âm thanh"
+      "name": "hiphop",
+      "id": 3
     }
   ],
   "products": [
-    {
-      "status": 1,
-      "id": 2
-    },
     {
       "name": "Apple iPhone 13 Pro Max",
       "originalPrice": 33990000,
@@ -30,36 +41,18 @@
       "categories": "tablet",
       "feature": "Màn hình Super Retina XDR 6.7 inch với ProMotion cho cảm giác nhanh nhạy hơn3\nChế độ Điện Ảnh làm tăng thêm độ sâu trường ảnh nông và tự động thay đổi tiêu cự trong video\nHệ thống camera chuyên nghiệp Telephoto, Wide và Ultra Wide 12MP; LiDAR Scanner; phạm vi thu phóng quang học 6x; chụp ảnh macro; Phong Cách Nhiếp Ảnh, video ProRes, HDR thông minh thế hệ 4, chế độ Ban Đêm, Apple ProRAW, khả năng quay video HDR Dolby Vision 4K",
       "description": "Cần có gói cước dữ liệu. Mạng 5G chỉ khả dụng ở một số thị trường và được cung cấp qua một số nhà mạng. Tốc độ có thể thay đổi tùy địa điểm và nhà mạng. Để biết thông tin về hỗ trợ mạng 5G, vui lòng liên hệ nhà mạng và truy cập apple.com/iphone/cellular.\n\n2Thời lượng pin khác nhau tùy theo cách sử dụng và cấu hình. Truy cập apple.com/batteries để biết thêm thông tin.\n\n",
-      "id": 3
-    },
-    {
-      "name": "Le Vu Trong444",
-      "originalPrice": 444444322,
-      "saleOffPrice": 33322,
-      "categories": "phone",
-      "feature": "fffffffffffffffffffffffffffffffffffff",
-      "description": "ggggggggggggggggggggggggggg",
-      "id": 4,
+      "id": 3,
       "status": 1
     },
     {
       "name": "Apple Watch Series 3 GPS Sport Band (Viền Nhôm, Dây Cao Su)",
       "originalPrice": 121212,
       "saleOffPrice": 21213213,
+      "categories": "tablet",
       "feature": "Apple Watch Series 3 GPS Sport Band (Viền Nhôm, Dây Cao Su)",
       "description": "Apple Watch Series 3 GPS Sport Band (Viền Nhôm, Dây Cao Su)",
       "id": 5,
-      "status": 1
-    },
-    {
-      "name": "333333ffffff",
-      "originalPrice": 33333333,
-      "saleOffPrice": 33333,
-      "categories": "phone",
-      "feature": "gggggggggggggggggggggggggggggg",
-      "description": "g44444444444444444444444444",
-      "id": 6,
-      "status": 1
+      "status": 0
     }
   ]
 }

@@ -1,5 +1,5 @@
 import { Content } from 'antd/lib/layout/layout'
-import React from 'react'
+import React, { useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import styled from 'styled-components'
 import WebsiteSider from './WebsiteSider'
@@ -8,10 +8,14 @@ import WebsiteContainer from './WebsiteContainer'
 type Props = {}
 
 const WebsiteMain = (props: Props) => {
+  const [cateEmbed,setCatesEmbed] = useState([])
+const onSendCates = (data:any) =>{
+  setCatesEmbed(data)
+} 
   return (
     <Content>
      <Section>
-      <WebsiteSider/>
+      <WebsiteSider />
       <Banner src={BannerImg}/>
      </Section>
      <WebsiteContainer/>

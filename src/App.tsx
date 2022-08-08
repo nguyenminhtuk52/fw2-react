@@ -6,17 +6,38 @@ import WebsiteLayout from './layout/WebsiteLayout';
 import AddProduct from './pages/admin/product/AddProduct';
 import EditProduct from './pages/admin/product/EditProduct';
 import ListProduct from './pages/admin/product/ListProduct';
+import ListCategory from './pages/admin/category/ListCategory';
+import AddCate from './pages/admin/category/AddCate';
+import EditCate from './pages/admin/category/EditCate';
+import ListUsers from './pages/admin/users/ListUsers';
+import EditUser from './pages/admin/users/EditUser';
+import RegisterPage from './pages/RegisterPage';
+import LoginPage from './pages/LoginPage';
+import WebsiteMain from './components/WebsiteMain';
 function App() {
   return (
     <div>
       <Wrapper>
         <Routes>
-          <Route path="/" element={<WebsiteLayout />}></Route>
+          <Route path="/" element={<WebsiteLayout />}>
+            <Route index element={<WebsiteMain />}></Route>
+            <Route path="login" element={<LoginPage />} />
+            <Route path="register" element={<RegisterPage />} />
+          </Route>
           <Route path='admin' element={<LayoutAdmin />}>
             <Route path='product'>
               <Route index element={<ListProduct />} />
               <Route path='add' element={<AddProduct />} />
               <Route path='edit/:id' element={<EditProduct />} />
+            </Route>
+            <Route path='category'>
+              <Route index element={<ListCategory />} />
+              <Route path='add' element={<AddCate />} />
+              <Route path='edit/:id' element={<EditCate />} />
+            </Route>
+            <Route path='user'>
+              <Route index element={<ListUsers />} />
+              <Route path='edit/:id' element={<EditUser />} />
             </Route>
           </Route>
         </Routes>

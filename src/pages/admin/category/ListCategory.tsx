@@ -4,7 +4,7 @@ import { Typography, Button, Table, Space } from 'antd';
 import { Link } from 'react-router-dom'
 import { PlusOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import type { ColumnsType } from 'antd/es/table';
-import { getAll, read, remove, updateProduct } from "../../../api/product";
+import { getAllCate, removeCate } from "../../../api/category";
 
 // import { useQuery } from 'react-query'
 const { Paragraph } = Typography
@@ -19,33 +19,19 @@ interface DataType {
 
 
 
-const ListProduct = () => {
+const ListCategory = () => {
     const [dataTable, setDataTable] = useState([]);
-    const onChangeStatus = async (id: any) => {
-        const {data} = await read(id)
-        let statusNew = 2;
-        if(data.status == 0) {
-            statusNew = 1
-        }else{
-            statusNew = 0
-        }
-        const dataUpdate = {...data, status: statusNew }
-    
-        await updateProduct(dataUpdate,id)
-        const dataNew = await getAll();
-        setDataTable(dataNew.data)
-      }
-    const DeleteProduct = async (id: any) => {
+    const DeleteCate = async (id: any) => {
         if (window.confirm("Bạn có muốn xóa không ?")) {
-            await remove(id);
-            const data = await getAll();   
+            await removeCate(id);
+            const data = await getAllCate();   
             setDataTable(data.data);
         }
     }
     useEffect(() => {
         const getProducts = async () => {
             try {
-                const { data } = await getAll()
+                const { data } = await getAllCate()
                 setDataTable(data);
             } catch (error) {
                 console.log(error);
@@ -56,26 +42,10 @@ const ListProduct = () => {
 
     const columns: ColumnsType<DataType> = [
         {
-            title: 'Tên sản phẩm',
+            title: 'Tên Danh Mục',
             dataIndex: 'name',
             key: 'name',
             render: text => <a>{text}</a>,
-        },
-        {
-            title: 'Đặc điểm',
-            dataIndex: 'feature',
-            key: 'feature',
-        },
-        {
-            title: 'Giá khuyến mãi',
-            dataIndex: 'saleOffPrice',
-            key: 'saleOffPrice',
-        },
-        {
-            title: 'Trạng thái',
-            dataIndex: 'status',
-            key: 'status',
-            render: status => <span>{status ? "Hết hàng" : 'Còn Hàng'}</span>
         },
         {
             title: 'Chức năng',
@@ -83,8 +53,8 @@ const ListProduct = () => {
             key: 'id',
             render: id => <Space>
 
-                <Button type="primary"><Link to={`/admin/product/edit/${id}`}><EditOutlined /></Link></Button>
-                <Button type="danger" onClick={() => DeleteProduct(id)} ><DeleteOutlined /></Button>
+                <Button type="primary"><Link to={`/admin/category/edit/${id}`}><EditOutlined /></Link></Button>
+                <Button type="danger" onClick={() => DeleteCate(id)} ><DeleteOutlined /></Button>
             </Space>
             ,
         },
@@ -93,9 +63,9 @@ const ListProduct = () => {
         <>
             <Breadcrumb>
                 <Typography.Title level={2} style={{ margin: 0 }}>
-                    Điện thoại
+                    Danh Mục
                 </Typography.Title>
-                <Link to="/admin/product/add">
+                <Link to="/admin/category/add">
                     <Button type="dashed" shape="circle" icon={<PlusOutlined />} />
                 </Link>
             </Breadcrumb>
@@ -111,4 +81,4 @@ const Breadcrumb = styled.div`
     margin-left: 20px;
 `
 
-export default ListProduct
+export default ListCategory

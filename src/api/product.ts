@@ -21,3 +21,7 @@ export const remove = (id: any) => {
     const url = `/products/${ id }`
     return instance.delete(url)
 }
+export const changeStatus = (id :any,data:any)=>{
+    const url = `products/${id}`
+    return instance.patch(url,data)
+}
