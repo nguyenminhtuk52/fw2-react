@@ -59,10 +59,11 @@ const WebsiteHeader = (props: Props) => {
           <LookUpImg src={Tracking}/>
           <LookUpLink>Tra cứu <br /> đơn hàng</LookUpLink>
         </LookUp>
-          <Cart>
+          <Link to='/cart'><Cart>
             <CartImg src={CartImage}/>
             <CartLink>Giỏ <br /> Hàng</CartLink>
           </Cart>
+          </Link>
             <Log><Auth><NavLink style={NavLinkStyle} to='login'>Đăng nhập</NavLink></Auth>|<Auth><NavLink style={NavLinkStyle} to='register'>Đăng ký</NavLink></Auth></Log>
         </Nav>
     </Header>

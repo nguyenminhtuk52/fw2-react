@@ -1,39 +1,53 @@
 import React, { useEffect, useState } from 'react'
 import styled from "styled-components";
-import { Typography, Col, Row, Button, Checkbox, Form, Input, InputNumber, Select, message } from 'antd'
+import { Typography, Col, Row, Button, Form, Input, InputNumber, Select, message } from 'antd'
+import { createProduct } from "../../../api/product";
 import { useNavigate } from "react-router-dom";
-import { CategoryType } from '../../../types/categoryType';
-import { createProduct } from '../../../api/product';
-import { getAllCate } from '../../../api/category';
 import UploadImage from '../../../components/UploadImg';
-
+import { CategoryType } from '../../../types/categoryType';
+import { getAllCate } from '../../../api/category';
+import axios from 'axios';
 const { TextArea } = Input
 const { Option } = Select;
 type Props = {}
 
 const AddProduct = () => {
-	const [categorys,setCategorys] = useState<CategoryType[]>([])
+	const [categorys, setCategorys] = useState<CategoryType[]>([])
 	const navigate = useNavigate();
+	const url = "https://api.cloudinary.com/v1_1/longtime/image/upload";
+	const clou_preset = "dlbjt6js";
+	const [img, setImg] = useState<any>({});
 	useEffect(() => {
-		const getAllCatee = async () =>{
-			const {data} = await getAllCate();
+		const getAllCatee = async () => {
+			const { data } = await getAllCate();
 			setCategorys(data);
 		}
 		getAllCatee();
-	},[])
+	}, [])
 	const onFinish = async (values: any) => {
-		console.log('Success:', values);
+		let image = ""
+		if (img) {
+			const formData = new FormData();
+			formData.append("file", img);
+			formData.append("upload_preset", clou_preset);
+			const { data } = await axios.post(url, formData, {
+				headers: {
+					"Content-Type": "application/form-data",
+				},
+			})
+			image = data.url;
+		}
 		try {
-			const data = await createProduct(values)
+			const newProduct = await createProduct({ ...values, image })
 			message.success("Tạo mới thành công")
 			navigate(-1)
 		} catch (err) {
 			message.error("Có lỗi xảy ra")
 		}
-	};
+	}
 	const onFinishFailed = (errorInfo: any) => {
 		console.log('Failed:', errorInfo);
-	};
+	}
 	return (
 		<>
 			<Breadcrumb>
@@ -43,7 +57,7 @@ const AddProduct = () => {
 			</Breadcrumb>
 			<Row gutter={16}>
 				<Col span={10}>
-				<UploadImage />
+					<UploadImage />
 					{/* <UploadTest/> */}
 				</Col>
 				<Col span={14}>
@@ -64,13 +78,11 @@ const AddProduct = () => {
 						>
 							<Input size="large" />
 						</Form.Item>
-						<Form.Item
-							name="image"
-							labelCol={{ span: 24 }}
-							label="Ảnh sản phẩm"
-						>
-							<Input size="large" />
-						</Form.Item>
+						<div>
+							<label htmlFor="">Ảnh</label>
+							<input type="file" onChange={(e) => { setImg(e.target.files[0]) }} id="formFile" />
+
+						</div>
 						<Row gutter={16}>
 							<Col span={12}>
 								<Form.Item
@@ -99,7 +111,7 @@ const AddProduct = () => {
 									rules={[{ required: true }]}
 								>
 									<Select style={{ width: '100%' }} size="large">
-										{categorys?.map(item =>{
+										{categorys?.map(item => {
 											return <Option key={item.id} value={item.id}>{item.name}</Option>
 										})}
 									</Select>

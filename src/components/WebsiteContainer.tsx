@@ -3,28 +3,21 @@ import { message } from "antd";
 import React, { useEffect, useState } from "react";
 import { Link, Outlet, useParams } from "react-router-dom";
 import styled from "styled-components";
-import { getAll, filterPro } from "../api/product";
+import { getAll, filterPro, filterProduct } from "../api/product";
 
 type Props = {
   productCates: any
 };
 
 const WebsiteContainer = (props: Props) => {
-  ;
   const [products, setProducts]: any = useState([]);
   const { id } = useParams();
-  if (props.productCates) {
-    setProducts(props.productCates.products)
-  }
-  else {
     useEffect(() => {
       const getProducts = async () => {
         if (id) {
           try {
-            const { data } = await filterPro(id)
-            console.log(data);
-
-            setProducts(data)
+            const { data } = await filterProduct(id);
+            setProducts(data);
           } catch (error) {
             message.error('Có lỗi xảy ra!')
           }
@@ -39,7 +32,6 @@ const WebsiteContainer = (props: Props) => {
       }
       getProducts()
     }, [id])
-  }
   return (
     <ContainerStyle>
       <Heading3>Điện thoại nổi bật nhất</Heading3>
@@ -59,32 +51,38 @@ const WebsiteContainer = (props: Props) => {
       </Grid>
       <Content>
         <Content1>
+          <Text>
           <Heading3>Phụ kiện</Heading3>
-          <Content1>
-            <ProductImg1 src="https://picsum.photos/200/300.jpg" alt="" />
-            <ProductImg1 src="https://picsum.photos/200/300.jpg" alt="" />
-            <ProductImg1 src="https://picsum.photos/200/300.jpg" alt="" />
-            <ProductImg1 src="https://picsum.photos/200/300.jpg" alt="" />
-            <ProductImg1 src="https://picsum.photos/200/300.jpg" alt="" />
-            <ProductImg1 src="https://picsum.photos/200/300.jpg" alt="" />
-            <ProductImg1 src="https://picsum.photos/200/300.jpg" alt="" />
-            <ProductImg1 src="https://picsum.photos/200/300.jpg" alt="" />
-            <ProductImg1 src="https://picsum.photos/200/300.jpg" alt="" />
-            <ProductImg1 src="https://picsum.photos/200/300.jpg" alt="" />
-            <ProductImg1 src="https://picsum.photos/200/300.jpg" alt="" />
+          <a style={{marginLeft:'780px'}}>Xem Tất Cả</a>
+          </Text>
+          <Content1 className="flex flex-wrap space-x-3">
+            <ProductImg1 src="https://cdn2.cellphones.com.vn/358x/media/catalog/product/b/a/balo-laptop-lenovo-backpack-kr3907-15-6-inch3.jpg" alt="" />
+            <ProductImg1 src="https://cdn2.cellphones.com.vn/358x/media/catalog/product/a/p/apple-airpods-max_1.jpg" alt="" />
+            <ProductImg1 src="https://cdn2.cellphones.com.vn/358x/media/catalog/product/1/6/16_3_1.png" alt="" />
+            <ProductImg1 src="https://cdn2.cellphones.com.vn/358x/media/catalog/product/w/e/webcam-rapoo-c200-hd-720p-1_.jpg" alt="" />
+            <ProductImg1 src="https://cdn2.cellphones.com.vn/358x/media/catalog/product/m/i/microsoft-surface-pen.jpg" alt="" />
+            <ProductImg1 src="https://cdn2.cellphones.com.vn/358x/media/catalog/product/g/i/gia-do-laptop-macbook-s-case-hop-kim-nhom-1.png" alt="" />
+            <ProductImg1 src="https://cdn2.cellphones.com.vn/358x/media/catalog/product/1/_/1_13_67_1.jpg" alt="" />
+            <ProductImg1 src="https://cdn2.cellphones.com.vn/358x/media/catalog/product/c/a/cap-type-c-to-lightning-apple-mm0a3fe-a-1m_1.jpg" alt="" />
+            <ProductImg1 src="https://cdn2.cellphones.com.vn/358x/media/catalog/product/t/a/tam-lot-chuot-rapoo-v1-30-25cm-1.jpg" alt="" />
+            <ProductImg1 src="https://cdn2.cellphones.com.vn/358x/media/catalog/product/j/b/jbl_quantum_200_product_image_side_hero_mic_up_1.png" alt="" />
+            <ProductImg1 src="https://cdn2.cellphones.com.vn/358x/media/catalog/product/j/b/jbl_quantum_400_product_image_angle_1.png" alt="" />
           </Content1>
         </Content1>
         <Content1>
           <br /><br />
+          <Text>
           <Heading3>Linh kiện máy tính</Heading3>
-          <Content1>
-            <ProductImg1 src="https://picsum.photos/200/300.jpg" alt="" />
-            <ProductImg1 src="https://picsum.photos/200/300.jpg" alt="" />
-            <ProductImg1 src="https://picsum.photos/200/300.jpg" alt="" />
-            <ProductImg1 src="https://picsum.photos/200/300.jpg" alt="" />
-            <ProductImg1 src="https://picsum.photos/200/300.jpg" alt="" />
-            <ProductImg1 src="https://picsum.photos/200/300.jpg" alt="" />
-            <ProductImg1 src="https://picsum.photos/200/300.jpg" alt="" />
+          <a style={{marginLeft:'700px'}}>Xem Tất Cả</a>
+          </Text>
+          <Content1 className="flex flex-wrap space-x-7">
+            <ProductImg1 src="https://cdn2.cellphones.com.vn/358x/media/catalog/product/d/a/day-deo-airtag-apple-loop-1.jpeg" alt="" />
+            <ProductImg1 src="https://cdn2.cellphones.com.vn/358x/media/catalog/product/d/a/day-deo-airtag-wiwu-silicone-4-in-1-pack-2.jpg" alt="" />
+            <ProductImg1 src="https://cdn2.cellphones.com.vn/358x/media/catalog/product/c/a/camera-ip-hikvision-ds-2cd2121g0-i-2mp-00.jpg" alt="" />
+            <ProductImg1 src="https://cdn2.cellphones.com.vn/358x/media/catalog/product/1/_/1_71_13.jpg" alt="" />
+            <ProductImg1 src="https://cdn2.cellphones.com.vn/358x/media/catalog/product/1/_/1_74_37.jpg" alt="" />
+            <ProductImg1 src="https://cdn2.cellphones.com.vn/358x/media/catalog/product/1/_/1_15_14_1_1_1.jpg" alt="" />
+            <ProductImg1 src="https://cdn2.cellphones.com.vn/358x/media/catalog/product/d/j/dji-osmo-5_01-768x768_1.jpg" alt="" />
           </Content1>
         </Content1>
       </Content>
@@ -112,6 +110,7 @@ margin-left: 0 20px;
 `
 const ContainerStyle = styled.div`
 padding : 0 100px;
+background-color white;
 `
 const Product = styled.div`
 width : 200px;
@@ -121,7 +120,6 @@ padding : 15px;
 const ProductImg = styled.img`
 width:160px;
 height : 160px;
-border: 1px solid #ccc;
 border-radius: 5px;
 margin : 3px;
 `
@@ -155,5 +153,8 @@ text-decoration: line-through;
 const ProductName = styled.span`
 display :block;
 margin-top : 10px;
+`
+const Text = styled.div`
+display :flex;
 `
 export default WebsiteContainer;

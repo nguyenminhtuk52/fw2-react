@@ -1,29 +1,42 @@
 import { ShoppingCartOutlined } from '@ant-design/icons'
-import { Breadcrumb } from 'antd'
+import { Breadcrumb, message } from 'antd'
 import { Content } from 'antd/lib/layout/layout'
 import React, { useEffect, useState } from 'react'
 import { Link, Outlet, useParams } from 'react-router-dom'
 import styled from 'styled-components'
-import { filterPro, read } from '../api/product'
+import { filterProduct, read } from '../api/product'
+import { useAppDispatch } from '../app/hook'
+import { addItem } from '../features/cartSlice'
 import { ProductType } from '../types/productType'
 type Props = {}
 
 const WebsiteDetail = (props: Props) => {
+    const dispatch = useAppDispatch();
     const { id } = useParams();
     const [product, setProduct] = useState<any>();
     const [products, setProducts] = useState<any[]>();
     useEffect(() => {
         const getProduct = async () => {
             const { data } = await read(id);
-            const { data: items } = await filterPro(data.category);
+            const { data: items } = await filterProduct(data.category);
             setProducts(items);
             setProduct(data);
         }
         getProduct();
-    }, [id])
+    }, [id]);
+    const addItemToCart = () => {
+        dispatch(addItem({
+            id: product?.id,
+            name: product?.name,
+            image: product?.image,
+            price: product?.saleOffPrice,
+            quantity: 1
+        }));
+        message.success("Đã Thêm Vào Giỏ Hàng")
+    }
     if (product) {
         return (
-            <Content>
+            <Content style={{ backgroundColor: 'white' }}>
                 <Breadcrumb style={{ marginLeft: '200px', marginTop: '20px' }}>
                     <Breadcrumb.Item>Home</Breadcrumb.Item>
                     <Breadcrumb.Item>
@@ -36,19 +49,19 @@ const WebsiteDetail = (props: Props) => {
                 </Breadcrumb>
                 <hr />
                 <Content1>
-                    <Content11>
+                    <Content11 className="flex-auto">
                         <Content1_img>
-                            <ProductImg src={product.image} alt="" />
+                            <ProductImg src={product.image} alt="" className="w-[300px]" />
                         </Content1_img>
-                        <Content1_detail>
+                        <Content1_detail className="w-[500px]">
                             <Heading3>{product.name}</Heading3>
                             <Heading2>{product.originalPrice}đ</Heading2>
                             <Heading5>{product.saleOffPrice}đ</Heading5>
 
                             <HeadingP>{product.description}</HeadingP>
                             <Content11>
-                                <Button className="btn">Mua ngay</Button>
-                                <Button1 className="btn"><ShoppingCartOutlined style={{ width: '100px' }} /></Button1>
+                                <Button>Mua ngay</Button>
+                                <Button1 onClick={() => addItemToCart()}><ShoppingCartOutlined style={{ width: '100px' }} /></Button1>
                                 <p style={{ marginTop: '95px', width: '80px' }}>Thêm vào giỏ hàng</p>
                             </Content11>
                         </Content1_detail>
@@ -61,7 +74,7 @@ const WebsiteDetail = (props: Props) => {
                             return (
                                 <Product key={item.id}>
                                     <ProductImg1 src={item.image} alt="" />
-                                    <ProductName><Link to={`/product-detail/`}>{item.name}</Link></ProductName>
+                                    <ProductName><Link to={`/${item.id}/detail`}>{item.name}</Link></ProductName>
                                     <Price>{item.saleOffPrice} đ<OriginalPrice>{item.originalPrice}đ</OriginalPrice></Price>
                                 </Product>
                             )

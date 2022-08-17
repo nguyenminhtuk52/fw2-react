@@ -8,13 +8,10 @@ import { CategoryType } from '../types/categoryType';
 type Props = {
   onSendCates: (data: any) => void
 }
-const SiderStyle: React.CSSProperties = {
-  height: '380px'
-}
 const SiderWebsite = (props: Props) => {
   const navLink: React.CSSProperties = {
     textAlign: 'center',
-    borderBottom: '2px solid black'
+    borderBottom: '2px solid black',
   }
   const { id } = useParams()
   const [categories, setCategories] = useState<CategoryType[]>([]);
@@ -31,21 +28,18 @@ const SiderWebsite = (props: Props) => {
   }, []);
 
   return (
-    <Sider className="site-layout-background" width={220}>
+    <Sider width={220} style={{ boxShadow: '10px 7px 10px rgba(5,0,0,0.5)' }}>
       <Menu
-        mode="inline"
-        defaultSelectedKeys={['1']}
+       mode="inline"
         style={{ height: '100%', borderRight: 0 }}>
-        <Link style={navLink} to={`/`} ><Menu.Item >Tất Cả</Menu.Item></Link>
         {categories && categories.map((item: any) => {
           return (
             <Link style={navLink} key={item.id} to={`/category/${item.id}`} >
-              <Menu.Item style={{color: 'black'}} key={item.id}>{item.name}<RightOutlined style={{ color: 'black', float:'right',marginTop: '10px' }}/></Menu.Item></Link>
+              <Menu.Item style={{ color: 'black' }} key={item.id}>{item.name}<RightOutlined style={{ color: 'black', float: 'right', marginTop: '10px' }} /></Menu.Item></Link>
           )
         })}
       </Menu>
     </Sider>
   )
 }
-
 export default SiderWebsite

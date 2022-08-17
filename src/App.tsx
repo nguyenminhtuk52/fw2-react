@@ -13,6 +13,7 @@ import ListUsers from './pages/admin/users/ListUsers';
 import EditUser from './pages/admin/users/EditUser';
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
+import Cart from './components/Cart';
 import WebsiteMain from './components/WebsiteMain';
 import WebsiteDetail from './components/WebsiteDetail';
 function App() {
@@ -22,10 +23,11 @@ function App() {
         <Routes>
         <Route path="/" element={<WebsiteLayout />}>
           <Route index element={<WebsiteMain />} />
+          <Route path="cart" element={<Cart/>} />
           <Route path="category/:id" element={< WebsiteMain/>} />
           <Route path=":id/detail" element={< WebsiteDetail/>} />
         </Route>
-          <Route path="login" element={<LoginPage />} />
+          <Route path="login" element={<LoginPage />} /> 
           <Route path="register" element={<RegisterPage />} />
           <Route path='admin' element={<LayoutAdmin />}>
             <Route path='product'>

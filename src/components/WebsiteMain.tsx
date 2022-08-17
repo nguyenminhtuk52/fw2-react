@@ -8,9 +8,7 @@ import WebsiteContainer from './WebsiteContainer'
 type Props = {}
 
 const WebsiteMain = (props: Props) => {
-  const [cateEmbed,setCatesEmbed] = useState([])
 const onSendCates = (data:any) =>{
-  setCatesEmbed(data)
 } 
   return (
     <Content>
@@ -23,10 +21,6 @@ const onSendCates = (data:any) =>{
   )
 }
 //Example Main
-const Main = styled.div`
-height:300px;
-width:100%
-`
 const Banner = styled.img`
 max-width: 1000px;
 height : 382px;
@@ -35,7 +29,8 @@ margin-left: 40px;
 const Section = styled.div`
 display : flex;
 padding : 10px 20px 0 200px;
-margin-bottom : 52px;
+padding-bottom : 52px;
+background-color :white;
 `
 
 export default WebsiteMain

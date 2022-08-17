@@ -115,6 +115,7 @@ const FooterTop = styled.div`
 padding: 0px 102px 0 202px;
 display:flex;
 margin-left: -40px;
+background-color: white;
 `
 const Ul = styled.ul`
 flex : 1;
@@ -128,6 +129,8 @@ margin-bottom: 5px;
 const FooterBottom = styled.div`
 background-color : #F8F8F8;
 padding: 15px 102px 0 202px;
+background-color: white;
+
 `
 const ListWrap = styled.div`
 display:flex;

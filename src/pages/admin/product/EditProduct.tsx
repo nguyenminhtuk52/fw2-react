@@ -3,24 +3,26 @@ import TextArea from 'antd/lib/input/TextArea';
 import { Option } from 'antd/lib/mentions';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { upload } from '../api/image';
-import { CategoryType } from '../../../types/categoryType';
-import { read, updateProduct } from '../../../api/product';
-import { getAllCate } from '../../../api/category';
+import { createProduct, getAll, read, updateProduct } from '../../../api/product';
+import { getAllCate as getAllCategory } from '../../../api/category';
+
 import UploadImage from '../../../components/UploadImg';
+import { CategoryType } from '../../../types/categoryType';
+import axios from 'axios';
 
-
-const UpdateProduct = () => {
+const EditProduct = () => {
 	const [categorys, setCategorys] = useState<CategoryType[]>([])
 	const { id } = useParams()
+	const [img, setImg] = useState<any>({});
+	const url = "https://api.cloudinary.com/v1_1/longtime/image/upload";
+	const clou_preset = "dlbjt6js";
 	useEffect(() => {
-		const getAllCatee = async () => {
-			const { data } = await getAllCate();
+		const getAllCate = async () => {
+			const { data } = await getAllCategory();
 			setCategorys(data);
 		}
-		getAllCatee();
+		getAllCate();
 	}, [])
-	// console.log(id);
 	const [form] = Form.useForm();
 	const getProducts = async () => {
 		const { data } = await read(id)
@@ -29,11 +31,24 @@ const UpdateProduct = () => {
 	getProducts()
 	const navigate = useNavigate()
 	const onFinish = async (values: any) => {
-		console.log('Success:', values);
+		let image = ""
+		if (img) {
+			const formData = new FormData();
+			formData.append("file", img);
+			formData.append("upload_preset", clou_preset);
+			const { data } = await axios.post(url, formData, {
+				headers: {
+					"Content-Type": "application/form-data",
+				},
+			});
+			image = data.url;
+		}
 		try {
-			await updateProduct(values, id)
-			message.success("Cập nhật thành công")
-			navigate('/admin/product')
+			const { name, originalPrice, saleOffPrice, category, feature, description } = values
+			const product = { name, originalPrice, saleOffPrice, category, feature, description }
+			const newProduct = await updateProduct({ ...product, image },id)
+			message.success("Cập nhận thành công")
+			navigate(-1)
 		} catch (err) {
 			message.error("Có lỗi xảy ra")
 		}
@@ -71,14 +86,12 @@ const UpdateProduct = () => {
 						>
 							<Input size="large" />
 						</Form.Item>
-						<Form.Item
-							name="image"
-							labelCol={{ span: 24 }}
-							label="Ảnh sản phẩm"
-							rules={[{ required: true, message: 'Ảnh sản phẩm không được trống' }]}
-						>
-							<Input size="large" />
-						</Form.Item>
+						<div>
+							<label htmlFor="">Ảnh</label>
+							<input type="file" onChange={(e) => { setImg(e.target.files[0]) }} id="formFile" />
+
+						</div>
+
 						<Row gutter={16}>
 							<Col span={12}>
 								<Form.Item
@@ -145,4 +158,4 @@ const UpdateProduct = () => {
 	);
 };
 
-export default UpdateProduct;
+export default EditProduct;
